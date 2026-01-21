@@ -41,15 +41,82 @@ nav a:hover { color: var(--accent); }
 .pub-year { font-weight: bold; color: var(--accent); display: block; margin-bottom: 5px; }
 .doi-link { font-family: monospace; font-size: 0.8rem; color: var(--accent); opacity: 0.8; }
 
-/* Download Button */
+/* Awards Section Styles */
+.awards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.award-card {
+    background: var(--card); /* Using your variable #18181b */
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.award-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px);
+}
+
+/* Highlight for Institute Topper */
+.award-card.topper {
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    background: linear-gradient(145deg, #18181b, #111827);
+}
+
+.award-year {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent); /* Emerald Green */
+    background: rgba(16, 185, 129, 0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.award-card h4 {
+    margin: 10px 0;
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+.award-card p {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Updated CV download styling */
+.cv-container {
+    text-align: center;
+    background: var(--card);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px dashed var(--border);
+}
+
 .btn-download {
     display: inline-block;
-    padding: 12px 24px;
+    margin-top: 1rem;
+    padding: 12px 30px;
     background: var(--accent);
     color: #000;
-    font-weight: bold;
-    border-radius: 6px;
     text-decoration: none;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.btn-download:hover {
+    background: #059669; /* Darker green */
+    transform: scale(1.05);
 }
 
 /* Miscellaneous Gallery */
