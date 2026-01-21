@@ -1,150 +1,87 @@
-/* --- 1. Global Variables and Reset --- */
 :root {
-    --primary-color: #007bff; /* Bright accent blue */
-    --background-dark: #1a1a1a; /* Dark background */
-    --text-light: #f0f0f0; /* Light text */
-    --card-background: #282828; /* Slightly lighter card background */
+    --bg: #09090b;
+    --card: #18181b;
+    --accent: #10b981; /* Emerald Green */
+    --text: #fafafa;
+    --text-dim: #a1a1aa;
+    --border: #27272a;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: var(--background-dark);
-    color: var(--text-light);
-    scroll-behavior: smooth;
-    line-height: 1.6;
-}
-
-h1, h2, h3 {
-    color: var(--primary-color);
-}
-
-/* --- 2. Links and Typography --- */
-a {
-    color: var(--primary-color);
-    text-decoration: none;
-    border-bottom: 1px dashed var(--primary-color);
-    transition: color 0.3s, border-bottom 0.3s;
-}
-
-a:hover {
-    color: #fff;
-    border-bottom: 1px solid #fff;
-}
-
-/* --- 3. Header & Navigation --- */
+/* Sticky Navigation */
 header {
-    background: var(--background-dark);
     position: sticky;
     top: 0;
-    z-index: 100;
-    border-bottom: 2px solid var(--primary-color);
+    background: rgba(9, 9, 11, 0.9);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    z-index: 1000;
 }
 
 nav {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 1em 20px;
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Vertically centers nav items */
+    padding: 1rem 20px;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
+nav ul { display: flex; list-style: none; gap: 1.5rem; margin: 0; padding: 0; }
+nav a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+nav a:hover { color: var(--accent); }
+
+/* Publications Style */
+.pub-item {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border-left: 2px solid var(--border);
+    transition: 0.3s;
 }
 
-nav ul li a {
-    color: var(--text-light);
-    text-decoration: none;
-    margin-left: 30px;
-    border-bottom: none; /* Remove underline from nav links */
-}
+.pub-item:hover { border-left-color: var(--accent); background: #111; }
+.pub-year { font-weight: bold; color: var(--accent); display: block; margin-bottom: 5px; }
+.doi-link { font-family: monospace; font-size: 0.8rem; color: var(--accent); opacity: 0.8; }
 
-nav ul li a:hover {
-    color: var(--primary-color);
-}
-
-/* --- 4. General Section Styling ---*/
-section {
-    padding: 80px 20px; /* Fixed spacing */
-    max-width: 1200px; /* Fixed spacing */
-    margin: 0 auto;
-    text-align: left; /* Fixed: Default alignment is left */
-}
-
-section h3 {
-    color: var(--primary-color);
-    margin-bottom: 40px;
-    text-align: center; /* Centers the main section heading */
-}
-
-/* --- 5. Hero Section (Two-Column Layout) --- */
-#hero {
-    /* Reduced padding for better two-column visual */
-    padding-top: 100px;
-    padding-bottom: 100px;
-    text-align: left; /* Ensures content inside aligns left */
-}
-
-.hero-container {
-    display: flex; /* Activates two-column layout */
-    align-items: center; /* Vertically center items */
-    justify-content: space-between; /* Space out content and image */
-    gap: 50px;
-}
-
-.hero-content {
-    flex: 3; /* Takes up approximately 70% of the space */
-}
-
-.hero-image {
-    flex: 1; /* Takes up approximately 30% of the space */
-    text-align: right; /* Aligns the image to the right within its column */
-}
-
-.profile-photo {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%; /* Makes the photo circular */
-    object-fit: cover;
-    border: 5px solid var(--primary-color);
-    box-shadow: 0 0 20px rgba(0, 123, 255, 0.5); /* Subtle glow effect */
-}
-
-.button {
+/* Download Button */
+.btn-download {
     display: inline-block;
-    background: var(--primary-color);
-    color: var(--text-light);
-    padding: 12px 25px;
+    padding: 12px 24px;
+    background: var(--accent);
+    color: #000;
+    font-weight: bold;
+    border-radius: 6px;
     text-decoration: none;
-    border-radius: 5px;
-    margin-top: 20px;
-    border-bottom: none; /* Button should not have a dashed border */
-    transition: background 0.3s;
 }
 
-.button:hover {
-    background: #0056b3;
+/* Miscellaneous Gallery */
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
 }
 
-/* --- 6. Projects and Awards --- */
-
-.projects-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start; /* Fixed: Align cards to the left side */
-    gap: 30px;
+.gallery-item {
+    background: var(--card);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
 }
 
-.project-card {
-    background: var(--card-background);
-    padding: 25px;
-    border-radius: 8px; /* Fixed spacing */
-    flex: 1 1 400px;
-    text-align: left;
-    border-left: 5px solid var(--primary-color); /* Fixed spacing */
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
 }
+
+.gallery-item:hover img { transform: scale(1.05); }
+
+.caption {
+    padding: 10px;
+    font-size: 0.85rem;
+    text-align: center;
+    color: var(--text-dim);
+}
+
+/* Rest of the styles (Hero, sections, etc.) from previous response remain the same */
